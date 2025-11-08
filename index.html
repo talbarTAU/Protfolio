@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tal Bar | Creative Technologist Portfolio</title>
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the portfolio */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Slate 50 */
+            color: #1e293b; /* Slate 800 */
+        }
+        .project-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(30, 41, 59, 0.1), 0 8px 10px -6px rgba(30, 41, 59, 0.1);
+        }
+        /* Removed .project-media-container styling as it is no longer used */
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation --><header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-extrabold text-blue-600 tracking-tight">
+                Tal Bar
+            </h1>
+            <nav class="space-x-4">
+                <a href="#projects" class="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium">Projects</a>
+                <a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium">About</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section --><section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+        <span class="text-sm font-semibold text-blue-600 uppercase tracking-wider">Software Engineer | Game Design</span>
+        <h2 class="mt-4 text-6xl font-black leading-tight sm:text-7xl">
+            Bridging Robust <span class="text-blue-600">Engineering</span> with Game Design
+        </h2>
+        <p class="mt-6 text-xl text-gray-500 max-w-3xl mx-auto">
+            Applying deep technical rigor from a CS background (Java, OOP) and a creative lens from an M.Des in Game Design to build innovative tools and interactive digital experiences.
+        </p>
+        <div class="mt-8 flex justify-center space-x-4">
+            <a href="#projects" class="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 transition-all duration-300 shadow-lg shadow-blue-300">
+                View Key Projects
+            </a>
+            <a href="https://github.com/talbarTAU/RayTracing" target="_blank" class="bg-gray-200 text-gray-800 px-8 py-3 rounded-xl font-bold hover:bg-gray-300 transition-all duration-300 shadow-md">
+                GitHub Profile
+            </a>
+        </div>
+    </section>
+
+    <!-- Projects Section --><section id="projects" class="py-16 bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-4xl font-bold text-center mb-12 text-gray-800">Featured Creative Engineering Work</h3>
+
+            <!-- PROJECT 1: Ray Tracer (Graphics Algorithm Focus) --><div class="project-card bg-gray-50 p-8 rounded-2xl shadow-xl mb-12">
+                <div class="md:flex md:space-x-8">
+                    <!-- Image of the Ray Tracer Output --><div class="md:w-1/2 mb-6 md:mb-0 rounded-xl flex items-center justify-center overflow-hidden">
+                        <img src="https://user-images.githubusercontent.com/73390948/224531844-e369b88a-9a87-4d2f-b496-0981d489761b.png" alt="Ray Tracing Project Output" class="w-full h-auto object-cover rounded-xl shadow-md">
+                    </div>
+                    <!-- Project Description --><div class="md:w-1/2">
+                        <span class="text-sm font-semibold text-red-500 uppercase tracking-wider">Computer Graphics & Rendering</span>
+                        <h4 class="text-3xl font-extrabold mt-1 mb-4 text-gray-900">Physically-Based Ray Tracer: Implementing Soft Shadows</h4>
+                        <p class="text-gray-600 mb-4">
+                            A foundational Ray Tracing engine built from scratch in Python, demonstrating core computer graphics principles including soft shadows, camera manipulation, and light-object interaction. The project demonstrates a deep algorithmic understanding of core rendering principles, including sampling, complex light-object interaction, and realistic camera perspective.
+                        </p>
+
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <span class="font-bold text-gray-800 w-28 shrink-0">Creative Goal:</span>
+                                <span class="text-gray-600">Achieving cinematic, physically-accurate lighting and reflection.</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="font-bold text-gray-800 w-28 shrink-0">AI/Tech Stack:</span>
+                                <span class="text-blue-600 font-mono text-sm bg-blue-50 px-2 py-1 rounded">Python, NumPy, Computer Graphics Algorithms, Mathematical Modeling</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="font-bold text-gray-800 w-28 shrink-0">Your Role:</span>
+                                <span class="text-gray-600">Sole implementation of core rendering algorithms and scene structure.</span>
+                            </div>
+                        </div>
+
+                        <a href="https://github.com/talbarTAU/RayTracing" target="_blank" class="inline-block mt-6 text-blue-600 font-bold hover:underline">View Code & Details on GitHub →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJECT 2: Blender Plugin (Graphics Tool & Extensibility Focus) --><div class="project-card bg-gray-50 p-8 rounded-2xl shadow-xl mb-12">
+                <div class="md:flex md:space-x-8 flex-row-reverse">
+                    <!-- Image/Video for Blender Plugin --><div class="md:w-1/2 mb-6 md:mb-0 rounded-xl flex items-center justify-center overflow-hidden">
+                        <img src="482E5E18-5B52-4496-858F-5CE982C5B4CB.jpg" alt="Stay Right There Blender Plugin Demo" class="w-full h-auto object-cover rounded-xl shadow-md">
+                    </div>
+                    <!-- Project Description --><div class="md:w-1/2">
+                        <span class="text-sm font-semibold text-green-500 uppercase tracking-wider">Creative Pipeline Integration & Python Scripting</span>
+                        <h4 class="text-3xl font-extrabold mt-1 mb-4 text-gray-900">Stay Right There: Custom 3D Holder Generator Plugin for Blender</h4>
+                        <p class="text-gray-600 mb-4">
+                            A specialized Python-based Blender plugin designed to analyze the dimensions of selected objects and automatically generate custom holders that securely fit around them, attaching them to a selected object. This project required expertise in **3D modeling**, **Python programming**, and the **Blender API (bpy)**.
+                        </p>
+
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <span class="font-bold text-gray-800 w-28 shrink-0">Creative Goal:</span>
+                                <span class="text-gray-600">Improving production efficiency and creative workflows in 3D.</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="font-bold text-gray-800 w-28 shrink-0">AI/Tech Stack:</span>
+                                <span class="text-blue-600 font-mono text-sm bg-blue-50 px-2 py-1 rounded">Python, Blender API (bpy), 3D Math, UI/UX for Addons</span>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="font-bold text-gray-800 w-28 shrink-0">Your Role:</span>
+                                <span class="text-gray-600">Plugin architecture, UI/UX design, and core scripting.</span>
+                            </div>
+                        </div>
+
+                        <a href="https://docs.google.com/presentation/d/1dGljvbzEuj6q0thoEhIf_Wq0eG8KpRMZ1ZR-3g76de0/mobilepresent?slide=id.g1c496a8320f_0_10" target="_blank" class="inline-block mt-6 text-blue-600 font-bold hover:underline">View Full Presentation →</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- About Section --><section id="about" class="py-16 bg-gray-100 border-t border-gray-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 class="text-4xl font-bold text-center mb-6 text-gray-800">About Me</h3>
+            <div class="max-w-4xl mx-auto text-lg text-gray-600 space-y-4">
+                <p>
+                    I am a **Software Engineer** blending a strong **Computer Science BSc foundation** from TAU with a fresh, creative perspective from an ongoing **M.Des in Game Design and Development**. I'm focused on applying robust engineering principles to dynamic creative environments.
+                </p>
+                <p>
+                    My experience includes **back-end development** using **Java, Spring, and Perl**, giving me a deep understanding of Object-Oriented Programming (OOP) and large-scale system architecture. This engineering rigor directly informs my graphics and creative projects.
+                </p>
+                <p>
+                    I am highly motivated, an autodidact, and a fast learner with high abstract thinking and problem-solving abilities. I excel working both independently and as part of a team, ready to build innovative digital tools that sit at the intersection of complex code and artistic vision.
+                </p>
+                <p class="pt-4 font-semibold text-gray-800">
+                    Key Skills: Java, Spring, Perl, **Python**, C++, OOP, Game Design, Blender API.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer --><footer id="contact" class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h4 class="text-3xl font-bold mb-4">Let's Connect!</h4>
+            <div class="space-y-2">
+                <p class="text-lg">Email: <a href="mailto:talbar2323@gmail.com" class="text-blue-400 hover:text-blue-300 underline font-medium">talbar2323@gmail.com</a></p>
+                <p class="text-lg">LinkedIn: <a href="https://www.linkedin.com/in/talbar-/" target="_blank" class="text-blue-400 hover:text-blue-300 underline font-medium">https://www.linkedin.com/in/talbar-/</a></p>
+            </div>
+            <p class="mt-8 text-sm text-gray-500">© 2025 Tal Bar. Built with HTML & Tailwind CSS.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
