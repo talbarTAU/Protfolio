@@ -3,170 +3,375 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tal Bar | Creative Technologist Portfolio</title>
-    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <title>Tal Bar | Game Economist & Creative Technologist</title>
+    <!-- טעינת הפונטים בסגנון פיקסל ורטרו -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <!-- טעינת Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        superplay: {
+                            pink: '#FF0055', // ורוד סופרפליי
+                            orange: '#FFAA00', // כתום סופרפליי
+                            dark: '#1e293b'
+                        }
+                    },
+                    fontFamily: {
+                        pixel: ['"Press Start 2P"', 'cursive'],
+                        retro: ['"VT323"', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* Custom styles for the portfolio */
+        /* עיצובים מותאמים אישית לסגנון פיקסל ארט */
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Slate 50 */
-            color: #1e293b; /* Slate 800 */
+            font-family: 'VT323', monospace;
+            font-size: 1.3rem;
+            background-color: #f8fafc;
+            /* יצירת רקע של רשת פיקסלים עדינה */
+            background-image: radial-gradient(#cbd5e1 2px, transparent 2px);
+            background-size: 30px 30px;
+            color: #1e293b;
+            scroll-behavior: smooth;
         }
-        .project-card {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            cursor: pointer;
+        
+        h1, h2, h3, h4, .pixel-font {
+            font-family: 'Press Start 2P', cursive;
+            line-height: 1.4;
         }
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(30, 41, 59, 0.1), 0 8px 10px -6px rgba(30, 41, 59, 0.1);
+
+        /* גבולות וצלליות קשות של רטרו */
+        .pixel-border {
+            border: 4px solid #1e293b;
+        }
+        
+        .pixel-card {
+            background-color: #ffffff;
+            border: 4px solid #1e293b;
+            box-shadow: 8px 8px 0px 0px #1e293b;
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+        
+        .pixel-card:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 6px 6px 0px 0px #1e293b;
+        }
+
+        .pixel-btn {
+            display: inline-block;
+            border: 4px solid #1e293b;
+            box-shadow: 4px 4px 0px 0px #1e293b;
+            text-transform: uppercase;
+            transition: all 0.1s;
+        }
+
+        .pixel-btn:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0px 0px #1e293b;
+        }
+
+        /* מד חיים */
+        .hp-bar-container {
+            width: 100%;
+            max-width: 300px;
+            height: 24px;
+            background-color: #e2e8f0;
+            border: 4px solid #1e293b;
+            position: relative;
+        }
+        
+        .hp-bar-fill {
+            height: 100%;
+            width: 65%; /* 65/100 HP */
+            background-color: #FF0055;
+            border-right: 4px solid #1e293b;
+        }
+
+        /* אנימציות */
+        .blink {
+            animation: blinker 1.5s linear infinite;
+        }
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+
+        .floating-xp {
+            position: absolute;
+            color: #FFAA00;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1rem;
+            text-shadow: 2px 2px 0px #1e293b;
+            animation: floatUp 3s ease-in infinite;
+            opacity: 0;
+            z-index: -1;
+        }
+
+        @keyframes floatUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { opacity: 0; transform: translateY(-80px); }
         }
     </style>
 </head>
-<body>
+<body class="relative overflow-x-hidden">
 
-    <!-- Header & Navigation --><header class="bg-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-extrabold text-blue-600 tracking-tight">
-                Tal Bar
+    <!-- ניווט עליון בסגנון חלונית מעוצבת -->
+    <header class="bg-white pixel-border border-t-0 border-l-0 border-r-0 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center">
+            <h1 class="text-xl font-bold pixel-font text-superplay-pink mb-4 sm:mb-0">
+                > TAL_BAR
             </h1>
-            <nav class="space-x-4">
-                <a href="#projects" class="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium">Projects</a>
-                <a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium">About</a>
-                <a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium">Contact</a>
-                <a href="Tal_Bar_CV_MDES.pdf" target="_blank" class="text-white bg-red-500 hover:bg-red-600 px-3 py-1 rounded-lg transition-colors duration-200 font-bold">Resume</a>
+            <nav class="pixel-font text-[10px] sm:text-xs flex flex-wrap justify-center items-center gap-4 sm:gap-6">
+                <a href="#projects" class="text-superplay-dark hover:text-superplay-orange transition-colors">PROJECTS</a>
+                <a href="#stats" class="text-superplay-dark hover:text-superplay-orange transition-colors">STATS</a>
+                <a href="#contact" class="text-superplay-dark hover:text-superplay-orange transition-colors">CONTACT</a>
+                <a href="Tal_Bar_CV_MDES.pdf" target="_blank" class="pixel-btn bg-superplay-pink text-white px-3 py-2 hover:bg-superplay-orange">CV.PDF</a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section --><section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-        <span class="text-sm font-semibold text-blue-600 uppercase tracking-wider">Software Engineer | Game Design</span>
-        <h2 class="mt-4 text-6xl font-black leading-tight sm:text-7xl">
-            Bridging Robust <span class="text-blue-600">Engineering</span> with Game Design
+    <!-- אזור פתיחה (Hero) עם אנימציות +10 מכרטיס הביקור -->
+    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+        <!-- אנימציות +10 צפות -->
+        <div class="floating-xp" style="left: 15%; top: 20%; animation-delay: 0s;">+10</div>
+        <div class="floating-xp" style="left: 80%; top: 30%; animation-delay: 1.5s;">+10</div>
+        <div class="floating-xp" style="left: 25%; top: 70%; animation-delay: 0.7s;">+10</div>
+        <div class="floating-xp" style="left: 70%; top: 60%; animation-delay: 2.2s;">+10</div>
+
+        <div class="mb-8">
+            <span class="pixel-font text-xs sm:text-sm text-superplay-pink blink bg-white px-4 py-2 pixel-border">
+                [ REHABILITATION IN PROGRESS ]
+            </span>
+        </div>
+        
+        <!-- Character Portrait / תמונת פיקסל ארט -->
+        <div class="flex justify-center mb-8 relative z-10">
+            <img src="Gemini_Generated_Image_8l91th8l91th8l91.png" alt="Tal Bar Pixel Art Portrait" class="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 pixel-border pixel-card object-cover bg-gray-200" style="image-rendering: pixelated;">
+        </div>
+
+        <h2 class="text-4xl sm:text-5xl md:text-6xl pixel-font text-superplay-dark leading-tight">
+            TAL BAR
         </h2>
-        <p class="mt-6 text-xl text-gray-500 max-w-3xl mx-auto">
-            Applying deep technical rigor from a CS background (Java, OOP) and a creative lens from an M.Des in Game Design to build innovative tools and interactive digital experiences.
+        <h3 class="mt-6 text-lg sm:text-xl md:text-2xl pixel-font text-superplay-orange">
+            GAME ECONOMIST @ SUPERPLAY
+        </h3>
+
+        <!-- מד חיים כמו בכרטיס -->
+        <div class="mt-10 flex flex-col items-center justify-center space-y-2">
+            <div class="flex items-center space-x-4">
+                <span class="pixel-font text-sm">HP</span>
+                <div class="hp-bar-container">
+                    <div class="hp-bar-fill"></div>
+                </div>
+                <span class="pixel-font text-sm">65/100</span>
+            </div>
+            <span class="pixel-font text-xs text-gray-500 mt-2 block">REHABILITATION GAME DEV</span>
+        </div>
+
+        <p class="mt-10 text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto bg-white p-6 pixel-border">
+            Applying technical rigor from a CS background and a creative lens from an M.Des to build balanced economies and interactive digital experiences.
         </p>
-        <div class="mt-8 flex justify-center space-x-4">
-            <a href="#projects" class="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 transition-all duration-300 shadow-lg shadow-blue-300">
-                View Key Projects
+
+        <div class="mt-10 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 md:space-x-6">
+            <a href="#projects" class="pixel-btn bg-superplay-pink text-white pixel-font text-[10px] sm:text-xs py-4 px-6 md:px-8 w-full sm:w-auto">
+                START_GAME()
             </a>
-            <a href="https://github.com/talbarTAU/RayTracing" target="_blank" class="bg-gray-200 text-gray-800 px-8 py-3 rounded-xl font-bold hover:bg-gray-300 transition-all duration-300 shadow-md">
-                GitHub Profile
+            <a href="#stats" class="pixel-btn bg-white text-superplay-dark pixel-font text-[10px] sm:text-xs py-4 px-6 md:px-8 w-full sm:w-auto">
+                VIEW_STATS
+            </a>
+            <a href="Tal_Bar_CV_MDES.pdf" target="_blank" class="pixel-btn bg-superplay-orange text-white pixel-font text-[10px] sm:text-xs py-4 px-6 md:px-8 w-full sm:w-auto">
+                GET_CV.PDF
             </a>
         </div>
     </section>
 
-    <!-- Projects Section --><section id="projects" class="py-16 bg-white border-t border-gray-200">
+    <!-- אזור פרויקטים מעוצב כמו קלפים/תיבות טקסט ממשחק -->
+    <section id="projects" class="py-20 bg-superplay-dark border-y-4 border-superplay-dark">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 class="text-4xl font-bold text-center mb-12 text-gray-800">Featured Creative Engineering Work</h3>
+            <h3 class="text-2xl md:text-3xl pixel-font text-center mb-16 text-white">
+                <span class="text-superplay-orange">></span> QUEST_LOG
+            </h3>
 
-            <!-- PROJECT 1: Ray Tracer (Graphics Algorithm Focus) --><div class="project-card bg-gray-50 p-8 rounded-2xl shadow-xl mb-12">
+            <!-- פרויקט 1 -->
+            <div class="pixel-card p-6 md:p-8 mb-12">
                 <div class="md:flex md:space-x-8">
-                    <!-- Image of the Ray Tracer Output --><div class="md:w-1/2 mb-6 md:mb-0 rounded-xl flex items-center justify-center overflow-hidden">
-                        <img src="https://user-images.githubusercontent.com/73390948/224531844-e369b88a-9a87-4d2f-b496-0981d489761b.png" alt="Ray Tracing Project Output" class="w-full h-auto object-cover rounded-xl shadow-md">
+                    <div class="md:w-1/2 mb-6 md:mb-0 pixel-border bg-gray-200 flex items-center justify-center overflow-hidden">
+                        <img src="https://user-images.githubusercontent.com/73390948/224531844-e369b88a-9a87-4d2f-b496-0981d489761b.png" alt="Ray Tracing Output" class="w-full h-auto object-cover">
                     </div>
-                    <!-- Project Description --><div class="md:w-1/2">
-                        <span class="text-sm font-semibold text-red-500 uppercase tracking-wider">Computer Graphics & Rendering</span>
-                        <h4 class="text-3xl font-extrabold mt-1 mb-4 text-gray-900">Physically-Based Ray Tracer: Implementing Soft Shadows</h4>
-                        <p class="text-gray-600 mb-4">
-                            A foundational Ray Tracing engine built from scratch in Python, demonstrating core computer graphics principles including soft shadows, camera manipulation, and light-object interaction. The project demonstrates a deep algorithmic understanding of core rendering principles, including sampling, complex light-object interaction, and realistic camera perspective.
+                    <div class="md:w-1/2 flex flex-col justify-center">
+                        <span class="pixel-font text-xs text-superplay-orange mb-2 block">Lvl. 1 : RENDERING</span>
+                        <h4 class="text-xl pixel-font mb-4 text-superplay-dark">Ray Tracer Engine</h4>
+                        <p class="text-gray-700 mb-6 text-xl">
+                            A foundational Ray Tracing engine built from scratch in Python, demonstrating core computer graphics principles including soft shadows, camera manipulation, and light-object interaction.
                         </p>
-
-                        <div class="space-y-3">
-                            <div class="flex items-center">
-                                <span class="font-bold text-gray-800 w-28 shrink-0">Creative Goal:</span>
-                                <span class="text-gray-600">Achieving cinematic, physically-accurate lighting and reflection.</span>
-                            </div>
-                            <div class="flex items-center">
-                                <span class="font-bold text-gray-800 w-28 shrink-0">AI/Tech Stack:</span>
-                                <span class="text-blue-600 font-mono text-sm bg-blue-50 px-2 py-1 rounded">Python, NumPy, Computer Graphics Algorithms, Mathematical Modeling</span>
-                            </div>
-                            <div class="flex items-center">
-                                <span class="font-bold text-gray-800 w-28 shrink-0">Your Role:</span>
-                                <span class="text-gray-600">Sole implementation of core rendering algorithms and scene structure.</span>
-                            </div>
+                        <div class="bg-gray-100 p-4 pixel-border mb-6">
+                            <span class="block pixel-font text-xs text-superplay-pink mb-2">EQUIPPED_ITEMS:</span>
+                            <span class="text-lg">Python, NumPy, Math Modeling</span>
                         </div>
-
-                        <a href="https://github.com/talbarTAU/RayTracing" target="_blank" class="inline-block mt-6 text-blue-600 font-bold hover:underline">View Code & Details on GitHub →</a>
+                        <a href="https://github.com/talbarTAU/RayTracing" target="_blank" class="pixel-btn bg-white text-xs py-3 px-6 text-center w-full sm:w-auto">
+                            VIEW_SOURCE_CODE
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- PROJECT 2: Blender Plugin (Graphics Tool & Extensibility Focus) --><div class="project-card bg-gray-50 p-8 rounded-2xl shadow-xl mb-12">
+            <!-- פרויקט 2 -->
+            <div class="pixel-card p-6 md:p-8">
                 <div class="md:flex md:space-x-8 flex-row-reverse">
-                    <!-- Image/Video for Blender Plugin --><div class="md:w-1/2 mb-6 md:mb-0 rounded-xl flex items-center justify-center overflow-hidden">
-                        <img src="482E5E18-5B52-4496-858F-5CE982C5B4CB.jpeg" alt="Stay Right There Blender Plugin Demo" class="w-full h-auto object-cover rounded-xl shadow-md">
+                    <div class="md:w-1/2 mb-6 md:mb-0 pixel-border bg-gray-200 flex items-center justify-center overflow-hidden md:ml-8 ml-0">
+                        <img src="482E5E18-5B52-4496-858F-5CE982C5B4CB.jpeg" alt="Blender Plugin Demo" class="w-full h-auto object-cover">
                     </div>
-                    <!-- Project Description --><div class="md:w-1/2">
-                        <span class="text-sm font-semibold text-green-500 uppercase tracking-wider">Creative Pipeline Integration & Python Scripting</span>
-                        <h4 class="text-3xl font-extrabold mt-1 mb-4 text-gray-900">Stay Right There: Custom 3D Holder Generator Plugin for Blender</h4>
-                        <p class="text-gray-600 mb-4">
-                            A specialized Python-based Blender plugin designed to analyze the dimensions of selected objects and automatically generate custom holders that securely fit around them, attaching them to a selected object. This project required expertise in **3D modeling**, **Python programming**, and the **Blender API (bpy)**.
+                    <div class="md:w-1/2 flex flex-col justify-center">
+                        <span class="pixel-font text-xs text-superplay-pink mb-2 block">Lvl. 2 : AUTOMATION</span>
+                        <h4 class="text-xl pixel-font mb-4 text-superplay-dark">Stay Right There Plugin</h4>
+                        <p class="text-gray-700 mb-6 text-xl">
+                            A specialized Python-based Blender plugin designed to analyze dimensions of objects and automatically generate custom holders.
                         </p>
+                        <div class="bg-gray-100 p-4 pixel-border mb-6">
+                            <span class="block pixel-font text-xs text-superplay-orange mb-2">EQUIPPED_ITEMS:</span>
+                            <span class="text-lg">Python, Blender API (bpy), 3D Math</span>
+                        </div>
+                        <a href="https://docs.google.com/presentation/d/1dGljvbzEuj6q0thoEhIf_Wq0eG8KpRMZ1ZR-3g76de0/mobilepresent?slide=id.g1c496a8320f_0_10" target="_blank" class="pixel-btn bg-white text-xs py-3 px-6 text-center w-full sm:w-auto">
+                            VIEW_PRESENTATION
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-                        <div class="space-y-3">
-                            <div class="flex items-center">
-                                <span class="font-bold text-gray-800 w-28 shrink-0">Creative Goal:</span>
-                                <span class="text-gray-600">Improving production efficiency and creative workflows in 3D.</span>
+            <!-- פרויקט 3 - וידאו (Digital Art) -->
+            <div class="pixel-card p-6 md:p-8 mt-12">
+                <div class="text-center mb-6">
+                    <span class="pixel-font text-xs text-superplay-pink mb-2 block">Lvl. 3 : DIGITAL_ART</span>
+                    <h4 class="text-xl pixel-font text-superplay-dark">Ekko Procreate Process</h4>
+                </div>
+                <div class="pixel-border bg-black flex items-center justify-center overflow-hidden max-w-3xl mx-auto">
+                    <video controls loop autoplay muted class="w-full h-auto object-cover">
+                        <source src="ekko_procreate.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- אזור הסטטוסים שמחליף קורות חיים רגילים -->
+    <section id="stats" class="py-20 bg-white border-b-4 border-superplay-dark">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="pixel-card p-8 bg-white">
+                <h3 class="pixel-font text-xl md:text-2xl mb-8 text-center border-b-4 border-superplay-dark pb-6">
+                    CHARACTER_STATS.EXE
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- פרופיל בסיסי -->
+                    <div>
+                        <h4 class="pixel-font text-superplay-pink mb-6 text-sm">> PROFILE</h4>
+                        <ul class="space-y-4 text-xl">
+                            <li class="flex items-center"><span class="w-24 font-bold pixel-font text-xs">NAME:</span> Tal Bar</li>
+                            <li class="flex items-center"><span class="w-24 font-bold pixel-font text-xs">CLASS:</span> Game Economist</li>
+                            <li class="flex items-center"><span class="w-24 font-bold pixel-font text-xs">GUILD:</span> SuperPlay</li>
+                            <li class="flex items-center"><span class="w-24 font-bold pixel-font text-xs">BASE:</span> Tel Aviv</li>
+                        </ul>
+
+                        <h4 class="pixel-font text-superplay-orange mb-6 mt-10 text-sm">> SKILL_TREE</h4>
+                        <ul class="space-y-3 text-lg font-mono">
+                            <li>[████████░░] Economy Design</li>
+                            <li>[███████░░░] Python / OOP</li>
+                            <li>[████████░░] Game Design</li>
+                            <li>[█████████░] Math Modeling</li>
+                            <li>[██████░░░░] Blender API</li>
+                        </ul>
+                    </div>
+
+                    <!-- היסטוריית תעסוקה ולימודים -->
+                    <div>
+                        <h4 class="pixel-font text-superplay-dark mb-6 text-sm">> QUEST_HISTORY</h4>
+                        
+                        <div class="space-y-6 relative border-l-4 border-gray-300 pl-6 ml-2">
+                            <!-- עבודה נוכחית -->
+                            <div class="relative">
+                                <div class="absolute -left-9 top-1 w-5 h-5 bg-superplay-pink pixel-border"></div>
+                                <h5 class="pixel-font text-sm text-superplay-pink leading-tight">Game Economist</h5>
+                                <span class="block text-gray-500 font-bold mb-2">@SuperPlay (2026 - Present)</span>
+                                <p class="text-gray-700 leading-snug">Designing and balancing game economies, leveraging data and mathematical models to enhance player experience.</p>
                             </div>
-                            <div class="flex items-center">
-                                <span class="font-bold text-gray-800 w-28 shrink-0">AI/Tech Stack:</span>
-                                <span class="text-blue-600 font-mono text-sm bg-blue-50 px-2 py-1 rounded">Python, Blender API (bpy), 3D Math, UI/UX for Addons</span>
+                            
+                            <!-- התמחות -->
+                            <div class="relative">
+                                <div class="absolute -left-9 top-1 w-5 h-5 bg-gray-300 pixel-border"></div>
+                                <h5 class="pixel-font text-sm text-superplay-dark leading-tight">Backend Developer</h5>
+                                <span class="block text-gray-500 font-bold mb-2">@AlgoSec (2022 - 2025)</span>
                             </div>
-                            <div class="flex items-center">
-                                <span class="font-bold text-gray-800 w-28 shrink-0">Your Role:</span>
-                                <span class="text-gray-600">Plugin architecture, UI/UX design, and core scripting.</span>
+
+                            <!-- תואר שני -->
+                            <div class="relative">
+                                <div class="absolute -left-9 top-1 w-5 h-5 bg-superplay-orange pixel-border"></div>
+                                <h5 class="pixel-font text-sm text-superplay-orange leading-tight">Game Dev MDes Student</h5>
+                                <span class="block text-gray-500 font-bold mb-2">@Shenkar (Present)</span>
+                            </div>
+
+                            <!-- תואר ראשון -->
+                            <div class="relative">
+                                <div class="absolute -left-9 top-1 w-5 h-5 bg-gray-300 pixel-border"></div>
+                                <h5 class="pixel-font text-sm text-superplay-dark leading-tight">Computer Science BSc</h5>
+                                <span class="block text-gray-500 font-bold mb-2">@TAU (Graduated 2024)</span>
                             </div>
                         </div>
 
-                        <a href="https://docs.google.com/presentation/d/1dGljvbzEuj6q0thoEhIf_Wq0eG8KpRMZ1ZR-3g76de0/mobilepresent?slide=id.g1c496a8320f_0_10" target="_blank" class="inline-block mt-6 text-blue-600 font-bold hover:underline">View Full Presentation →</a>
+                        <!-- תכונות נוספות -->
+                        <h4 class="pixel-font text-superplay-dark mb-4 mt-8 text-sm">> PASSIVE_TRAITS</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-200 pixel-border px-3 py-1 text-sm font-bold">IDF Combat Soldier</span>
+                            <span class="bg-gray-200 pixel-border px-3 py-1 text-sm font-bold">Rugby National Team</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- PROJECT 3: Digital Art (Video Only) --><div class="project-card bg-gray-50 p-8 rounded-2xl shadow-xl">
-                <div class="md:flex md:space-x-8">
-                    <!-- Video Embed --><div class="md:w-full mb-6 md:mb-0 rounded-xl flex items-center justify-center overflow-hidden bg-gray-900">
-                         <video controls loop autoplay muted class="w-full h-auto object-cover rounded-xl shadow-md max-w-xl mx-auto">
-                            <source src="ekko_procreate.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- About Section --><section id="about" class="py-16 bg-gray-100 border-t border-gray-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h3 class="text-4xl font-bold text-center mb-6 text-gray-800">About Me</h3>
-            <div class="max-w-4xl mx-auto text-lg text-gray-600 space-y-4">
-                <p>
-                    I am a **Software Engineer** blending a strong **Computer Science BSc foundation** from TAU with a fresh, creative perspective from an ongoing **M.Des in Game Design and Development**. I'm focused on applying robust engineering principles to dynamic creative environments.
-                </p>
-                <p>
-                    My experience includes **back-end development** using **Java, Spring, and Perl**, giving me a deep understanding of Object-Oriented Programming (OOP) and large-scale system architecture. This engineering rigor directly informs my graphics and creative projects.
-                </p>
-                <p>
-                    I am highly motivated, an autodidact, and a fast learner with high abstract thinking and problem-solving abilities. I excel working both independently and as part of a team, ready to build innovative digital tools that sit at the intersection of complex code and artistic vision.
-                </p>
-                <p class="pt-4 font-semibold text-gray-800">
-                    Key Skills: Java, Spring, Perl, **Python**, C++, OOP, Game Design, Blender API.
-                </p>
             </div>
         </div>
     </section>
 
-    <!-- Contact & Footer --><footer id="contact" class="bg-gray-800 text-white py-12">
+    <!-- אזור יצירת קשר / Footer -->
+    <footer id="contact" class="bg-gray-200 border-t-4 border-superplay-dark py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h4 class="text-3xl font-bold mb-4">Let's Connect!</h4>
-            <div class="space-y-2">
-                <p class="text-lg">Email: <a href="mailto:talbar2323@gmail.com" class="text-blue-400 hover:text-blue-300 underline font-medium">talbar2323@gmail.com</a></p>
-                <p class="text-lg">LinkedIn: <a href="https://www.linkedin.com/in/talbar-/" target="_blank" class="text-blue-400 hover:text-blue-300 underline font-medium">https://www.linkedin.com/in/talbar-/</a></p>
-                <p class="text-lg">Resume: <a href="Tal_Bar_CV_MDES.pdf" target="_blank" class="text-blue-400 hover:text-blue-300 underline font-medium">Download PDF</a></p>
+            
+            <div class="inline-block bg-white pixel-border p-6 mb-8 transform -rotate-2">
+                <h4 class="pixel-font text-xl mb-2 text-superplay-dark">SCAN_ME</h4>
+                <p class="text-lg mb-4">Ready to join the party?</p>
+                <div class="w-24 h-24 bg-black mx-auto pixel-border flex items-center justify-center">
+                    <!-- ייצוג למקום ל-QR קוד שיש בכרטיס -->
+                    <span class="pixel-font text-[8px] text-white text-center">QR<br>CODE</span>
+                </div>
             </div>
-            <p class="mt-8 text-sm text-gray-500">© 2025 Tal Bar. Built with HTML & Tailwind CSS.</p>
+
+            <div class="space-y-4">
+                <p class="pixel-font text-xs sm:text-sm">
+                    <span class="text-gray-500">EMAIL:</span> 
+                    <a href="mailto:talbar2323@gmail.com" class="text-superplay-pink hover:underline">talbar2323@gmail.com</a>
+                </p>
+                <p class="pixel-font text-xs sm:text-sm">
+                    <span class="text-gray-500">PHONE:</span> 
+                    <span class="text-superplay-orange">054-673-2343</span>
+                </p>
+                <p class="pixel-font text-xs sm:text-sm">
+                    <span class="text-gray-500">LINKEDIN:</span> 
+                    <a href="https://www.linkedin.com/in/talbar-/" target="_blank" class="text-superplay-dark hover:underline">/in/talbar-/</a>
+                </p>
+                
+                <div class="pt-8">
+                    <a href="Tal_Bar_CV_MDES.pdf" target="_blank" class="pixel-btn bg-superplay-dark text-white text-xs py-3 px-6">
+                        DOWNLOAD_FULL_CV.PDF
+                    </a>
+                </div>
+            </div>
+            
+            <p class="mt-12 pixel-font text-[10px] text-gray-500">GAME OVER? NO, JUST LEVELING UP. © 2026 TAL BAR.</p>
         </div>
     </footer>
 
